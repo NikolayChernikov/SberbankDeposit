@@ -43,7 +43,7 @@ def test_bad_date_month():
 
 
 def test_bad_date_year():
-    response = client.post("/deposit/calculation", json={"date": "31.12.20212",
+    response = client.post("/deposit/calculation", json={"date": "31.12.0",
                                                          "periods": 3,
                                                          "amount": 10000,
                                                          "rate": 6})
