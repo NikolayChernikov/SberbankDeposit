@@ -1,3 +1,8 @@
+# **Description**
+
+### This application was created to calculate deposit.
+### API path "/deposit/calculation"
+
 # **Work with docker**
 
 ## **To build docker image:**
@@ -19,3 +24,9 @@
 ## **To delete docker container and image:**
 
     ./deployment/scripts/delete.sh
+
+# **Technology stack**
+* FastAPI - for building API
+* Uvicorn - ASGI
+* Pydantic - for validate input data
+* Pytest - for test api
