@@ -16,9 +16,9 @@ class InputDepositData(BaseModel):
             split_data = list(map(int, date.split(".")))
             if split_data[0] > 31 or split_data[0] < 1:
                 raise HTTPException(status_code=400, detail="Incorrect date day")
-            if split_data[1] > 12 or split_data[1] < 1:
+            elif split_data[1] > 12 or split_data[1] < 1:
                 raise HTTPException(status_code=400, detail="Incorrect date month")
-            if split_data[2] > 4 or split_data[2] < 1:
+            elif len(str(split_data[2])) != 4:
                 raise HTTPException(status_code=400, detail="Incorrect date year")
         return date
 

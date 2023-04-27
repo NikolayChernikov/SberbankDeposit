@@ -1,7 +1,7 @@
 import calendar
 from fastapi import APIRouter, HTTPException
 from fastapi.responses import JSONResponse
-from src.validation import InputDepositData
+from validation import InputDepositData
 
 router = APIRouter()
 
