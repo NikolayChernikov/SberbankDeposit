@@ -32,6 +32,6 @@ async def deposit_calculation(input_data: InputDepositData):
                     date_data = f"{date_data_buffer[1]}.0{month + 1}.{year}"
                 else:
                     date_data = f"{date_data_buffer[1]}.{month + 1}.{year}"
-    except Exception as e:
+    except Exception:
         raise HTTPException(status_code=500, detail="Unexpected error")
     return JSONResponse(returned_json_obj)
