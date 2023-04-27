@@ -4,13 +4,24 @@ from main import app
 client = TestClient(app)
 
 
-def test_calculate_deposit():
+def test_calculate_deposit_v1():
     response = client.post("/deposit/calculation", json={"date": "31.01.2021",
                                                          "periods": 3,
                                                          "amount": 10000,
                                                          "rate": 6})
     assert response.status_code == 200
     assert response.json() == {"31.01.2021": 10050, "28.02.2021": 10100.25, "31.03.2021": 10150.75}
+
+
+def test_calculate_deposit_v2():
+    response = client.post("/deposit/calculation", json={"date": "31.01.2021",
+                                                         "periods": 7,
+                                                         "amount": 10000,
+                                                         "rate": 6})
+    assert response.status_code == 200
+    assert response.json() == {"31.01.2021": 10050, "28.02.2021": 10100.25, "31.03.2021": 10150.75,
+                               "30.04.2021": 10201.51, "31.05.2021": 10252.51, "30.06.2021": 10303.78,
+                               "31.07.2021": 10355.29}
 
 
 def test_bad_date_day():
