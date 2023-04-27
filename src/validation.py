@@ -14,8 +14,12 @@ class InputDepositData(BaseModel):
             raise HTTPException(status_code=400, detail="Incorrect format. Date format must be dd.mm.YYYY")
         else:
             split_data = list(map(int, date.split(".")))
-            if split_data[0] > 31 or split_data[1] > 12 or len(split_data) > 4:
-                raise HTTPException(status_code=400, detail="Incorrect date data")
+            if split_data[0] > 31 or split_data[0] < 1:
+                raise HTTPException(status_code=400, detail="Incorrect date day")
+            if split_data[1] > 12 or split_data[1] < 1:
+                raise HTTPException(status_code=400, detail="Incorrect date month")
+            if split_data[2] > 4 or split_data[2] < 1:
+                raise HTTPException(status_code=400, detail="Incorrect date year")
         return date
 
     @validator("periods")
