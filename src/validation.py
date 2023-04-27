@@ -18,7 +18,7 @@ class InputDepositData(BaseModel):
                 raise HTTPException(status_code=400, detail="Incorrect date day")
             elif split_data[1] > 12 or split_data[1] < 1:
                 raise HTTPException(status_code=400, detail="Incorrect date month")
-            elif len(str(split_data[2])) != 4:
+            elif split_data[2] < 1:
                 raise HTTPException(status_code=400, detail="Incorrect date year")
         return date
 
